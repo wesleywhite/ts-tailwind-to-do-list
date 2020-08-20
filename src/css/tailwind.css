@@ -1,0 +1,22 @@
+@tailwind base;
+
+
+.to-do-item-incomplete {
+    @apply my-1 p-2; 
+}
+
+.to-do-item-completed {
+    @apply my-1 p-2; 
+}
+
+.to-do-item-incomplete:hover {
+    @apply bg-burnt_orange-300;
+}
+
+.to-do-item-completed:hover {
+    @apply bg-burnt_orange-300;
+}
+
+@tailwind components;
+
+@tailwind utilities;
