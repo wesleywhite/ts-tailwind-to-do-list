@@ -1,9 +1,11 @@
 import React from 'react'
 import {ToDoItemType} from './types'
 
-const ToDo = () => {
+type ToDoPropTypes = {toDoItems: ToDoItemType[], setToDoItems: (toDos: ToDoItemType[])=>void}
 
-    const [toDoItems, setToDoItems] = React.useState<ToDoItemType[]>([])
+const ToDo = (props: ToDoPropTypes) => {
+    const { toDoItems, setToDoItems } = props
+    //const [toDoItems, setToDoItems] = React.useState<ToDoItemType[]>([])
     const [toDoDesc, setToDoDesc] = React.useState('')
 
     const handleCompletionChange = (item: ToDoItemType) => {
@@ -70,7 +72,7 @@ const NewToDo = (props: NewToDoType) => {
         <div className="flex w-full">
             <button 
             onClick={() => handleCreateItem()}
-            className="py-2 px-4 mr-2 bg-gray-100 rounded-md">
+            className="btn">
                 +
             </button>
             <input 
