@@ -1,19 +1,10 @@
 @tailwind base;
 
-
-.to-do-item-incomplete {
-    @apply my-1 p-2; 
-}
-
-.to-do-item-completed {
-    @apply my-1 p-2; 
-}
-
-.to-do-item-incomplete:hover {
+.incomplete:hover {
     @apply bg-burnt_orange-300;
 }
 
-.to-do-item-completed:hover {
+.completed:hover {
     @apply bg-gray-200;
 }
 

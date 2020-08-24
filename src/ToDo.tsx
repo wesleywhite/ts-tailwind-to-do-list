@@ -21,7 +21,7 @@ const ToDo = (props: ToDoPropTypes) => {
             <NewToDo setToDoDesc={setToDoDesc} setToDoItems={setToDoItems} toDoItems={toDoItems} toDoDesc={toDoDesc}/>
             <div className="h-64 overflow-scroll mt-2">
                 {toDoItems.filter(item => !item.isCompleted).map((item, i) => (
-                    <div key={i} className={`to-do-item-incomplete bg-burnt_orange-500`}>
+                    <div key={i} className={`to-do-item incomplete bg-burnt_orange-500`}>
                         <input 
                         checked={item.isCompleted}
                         type="checkbox"
@@ -32,7 +32,7 @@ const ToDo = (props: ToDoPropTypes) => {
                     </div>
                 ))}
                 {toDoItems.filter(item => item.isCompleted).map((item, i) => (
-                    <div key={i} className={`to-do-item-completed bg-gray-400 text-gray-100'}`}>
+                    <div key={i} className={`to-do-item completed bg-gray-400 text-gray-100'}`}>
                         <input 
                         checked={item.isCompleted}
                         type="checkbox"

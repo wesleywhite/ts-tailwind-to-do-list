@@ -8,7 +8,7 @@ function App() {
   const [toDoItems, setToDoItems] = React.useState<ToDoItemType[]>([])
 
   return (
-    <div className='bg-gray-200 w-screen h-screen flex flex-col justify-center items-center' >
+    <div className='bg-gray-700 w-screen h-screen flex flex-col justify-center items-center' >
       <ToDo toDoItems={toDoItems} setToDoItems={setToDoItems}/>
       <Stats toDoItems={toDoItems}/>
     </div>

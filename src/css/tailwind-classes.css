@@ -577,25 +577,19 @@ video {
   height: auto;
 }
 
-.to-do-item-incomplete {
+.to-do-item {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   padding: 0.5rem;
 }
 
-.to-do-item-completed {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  padding: 0.5rem;
-}
-
-.to-do-item-incomplete:hover {
+.incomplete:hover {
   --bg-opacity: 1;
   background-color: #cc7933;
   background-color: rgba(204, 121, 51, var(--bg-opacity));
 }
 
-.to-do-item-completed:hover {
+.completed:hover {
   --bg-opacity: 1;
   background-color: #edf2f7;
   background-color: rgba(237, 242, 247, var(--bg-opacity));
