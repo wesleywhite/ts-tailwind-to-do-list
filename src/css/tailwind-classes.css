@@ -590,10 +590,22 @@ video {
 }
 
 .btn {
+  border-radius: 0.375rem;
+}
+
+.btn-dark {
+  --bg-opacity: 1;
+  background-color: #a0aec0;
+  background-color: rgba(160, 174, 192, var(--bg-opacity));
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+.btn-light {
   --bg-opacity: 1;
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));
-  border-radius: 0.375rem;
 }
 
 .btn-sm {

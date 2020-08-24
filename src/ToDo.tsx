@@ -2,7 +2,7 @@ import React from 'react'
 import {ToDoItemType, ToDoPropTypes, NewToDoType, InnerToDoTypes} from './types'
 
 const ToDo = (props: ToDoPropTypes) => {
-    const { toDoItems, setToDoItems } = props
+    const { toDoItems, setToDoItems, darkMode } = props
     const [toDoDesc, setToDoDesc] = React.useState('')
 
     const handleCompletionChange = (item: ToDoItemType) => {
@@ -21,7 +21,7 @@ const ToDo = (props: ToDoPropTypes) => {
     return (
         <div className='w-3/4 bg-burnt_orange-200 rounded-lg p-2'>
             To Do List
-            <NewToDo setToDoDesc={setToDoDesc} setToDoItems={setToDoItems} toDoItems={toDoItems} toDoDesc={toDoDesc}/>
+            <NewToDo setToDoDesc={setToDoDesc} setToDoItems={setToDoItems} toDoItems={toDoItems} toDoDesc={toDoDesc} darkMode={darkMode}/>
             <div className="h-64 overflow-scroll mt-2">
                 {toDoItems.filter(item => !item.isCompleted).map((item, i) => (
                     <div key={i} className={`to-do-item incomplete bg-burnt_orange-500`}>
@@ -29,6 +29,7 @@ const ToDo = (props: ToDoPropTypes) => {
                             item={item} 
                             handleCompletionChange={handleCompletionChange}
                             handleDeleteToDo={handleDeleteToDo}
+                            darkMode={darkMode}
                         />
                     </div>
                 ))}
@@ -38,6 +39,7 @@ const ToDo = (props: ToDoPropTypes) => {
                             item={item} 
                             handleCompletionChange={handleCompletionChange}
                             handleDeleteToDo={handleDeleteToDo}
+                            darkMode={darkMode}
                         />
                     </div>
                 ))}
@@ -47,7 +49,7 @@ const ToDo = (props: ToDoPropTypes) => {
 }
 
 const NewToDo = (props: NewToDoType) => {
-    const {setToDoDesc, setToDoItems, toDoItems, toDoDesc} = props
+    const {setToDoDesc, setToDoItems, toDoItems, toDoDesc, darkMode} = props
     const handleCreateItem = () => {
         if (toDoDesc.trim() !== '') {
             const newItem: ToDoItemType = {
@@ -64,22 +66,21 @@ const NewToDo = (props: NewToDoType) => {
         <div className="flex w-full">
             <button 
             onClick={() => handleCreateItem()}
-            className="btn btn-md mr-2">
+            className={`${darkMode ? 'btn-dark' : 'btn-light'} btn btn-md mr-2`}>
                 +
             </button>
             <input 
             placeholder="I need to..."
             value={toDoDesc}
             onChange={(e) => setToDoDesc(e.target.value)}
-            className="flex-1 px-1 rounded-sm">
+            className={`flex-1 px-1 rounded-sm ${darkMode ? 'bg-gray-600 text-white' : 'bg-gray-200'}`}>
             </input>
         </div>
     )
 }
 
 const InnerToDo = (props: InnerToDoTypes) => {
-
-    const {item, handleCompletionChange, handleDeleteToDo} = props
+    const {item, handleCompletionChange, handleDeleteToDo, darkMode} = props
     return (
         <div
             className="flex justify-between items-center p-2 mb-1"
@@ -95,7 +96,7 @@ const InnerToDo = (props: InnerToDoTypes) => {
             </div>
             <button 
             onClick={()=>handleDeleteToDo(item)}
-            className="btn btn-sm mr-2">
+            className={`${darkMode ? 'btn-dark' : 'btn-light'} btn btn-sm mr-2`}>
                 x
             </button>
         </div>

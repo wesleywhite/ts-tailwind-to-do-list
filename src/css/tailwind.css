@@ -9,7 +9,15 @@
 }
 
 .btn {
-    @apply bg-gray-100 rounded-md;
+    @apply rounded-md;
+}
+
+.btn-dark {
+    @apply bg-gray-500 text-white;
+}
+
+.btn-light {
+    @apply bg-gray-100;
 }
 
 .btn-sm {
