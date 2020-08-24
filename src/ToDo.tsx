@@ -1,11 +1,8 @@
 import React from 'react'
-import {ToDoItemType} from './types'
-
-type ToDoPropTypes = {toDoItems: ToDoItemType[], setToDoItems: (toDos: ToDoItemType[])=>void}
+import {ToDoItemType, ToDoPropTypes, NewToDoType, InnerToDoTypes} from './types'
 
 const ToDo = (props: ToDoPropTypes) => {
     const { toDoItems, setToDoItems } = props
-    //const [toDoItems, setToDoItems] = React.useState<ToDoItemType[]>([])
     const [toDoDesc, setToDoDesc] = React.useState('')
 
     const handleCompletionChange = (item: ToDoItemType) => {
@@ -14,6 +11,12 @@ const ToDo = (props: ToDoPropTypes) => {
         setToDoItems(toDoCopy)
     }
 
+    const handleDeleteToDo = (item: ToDoItemType) => {
+        const toDoCopy: ToDoItemType[] = [...toDoItems]
+        const idx = toDoCopy.findIndex(toDo => toDo.id === item.id)
+        toDoCopy.splice(idx,1)
+        setToDoItems(toDoCopy)
+    }
 
     return (
         <div className='w-3/4 bg-burnt_orange-200 rounded-lg p-2'>
@@ -22,36 +25,25 @@ const ToDo = (props: ToDoPropTypes) => {
             <div className="h-64 overflow-scroll mt-2">
                 {toDoItems.filter(item => !item.isCompleted).map((item, i) => (
                     <div key={i} className={`to-do-item incomplete bg-burnt_orange-500`}>
-                        <input 
-                        checked={item.isCompleted}
-                        type="checkbox"
-                        className="mr-2"
-                        onChange={() => handleCompletionChange(item)}
+                        <InnerToDo 
+                            item={item} 
+                            handleCompletionChange={handleCompletionChange}
+                            handleDeleteToDo={handleDeleteToDo}
                         />
-                        {item.desc}
                     </div>
                 ))}
                 {toDoItems.filter(item => item.isCompleted).map((item, i) => (
                     <div key={i} className={`to-do-item completed bg-gray-400 text-gray-100'}`}>
-                        <input 
-                        checked={item.isCompleted}
-                        type="checkbox"
-                        className="mr-2"
-                        onChange={() => handleCompletionChange(item)}
+                        <InnerToDo 
+                            item={item} 
+                            handleCompletionChange={handleCompletionChange}
+                            handleDeleteToDo={handleDeleteToDo}
                         />
-                        {item.desc}
                     </div>
                 ))}
             </div>
         </div> 
     )
-}
-
-type NewToDoType = {
-    setToDoDesc: (arg0: string) => void
-    setToDoItems: (arg0: ToDoItemType[]) => void
-    toDoItems: ToDoItemType[]
-    toDoDesc: string
 }
 
 const NewToDo = (props: NewToDoType) => {
@@ -72,7 +64,7 @@ const NewToDo = (props: NewToDoType) => {
         <div className="flex w-full">
             <button 
             onClick={() => handleCreateItem()}
-            className="btn">
+            className="btn btn-md mr-2">
                 +
             </button>
             <input 
@@ -81,6 +73,31 @@ const NewToDo = (props: NewToDoType) => {
             onChange={(e) => setToDoDesc(e.target.value)}
             className="flex-1 px-1 rounded-sm">
             </input>
+        </div>
+    )
+}
+
+const InnerToDo = (props: InnerToDoTypes) => {
+
+    const {item, handleCompletionChange, handleDeleteToDo} = props
+    return (
+        <div
+            className="flex justify-between items-center p-2 mb-1"
+        >
+            <div>
+                <input 
+                checked={item.isCompleted}
+                type="checkbox"
+                className="mr-2"
+                onChange={() => handleCompletionChange(item)}
+                />
+                {item.desc}
+            </div>
+            <button 
+            onClick={()=>handleDeleteToDo(item)}
+            className="btn btn-sm mr-2">
+                x
+            </button>
         </div>
     )
 }

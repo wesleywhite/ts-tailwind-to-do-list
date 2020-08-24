@@ -577,12 +577,6 @@ video {
   height: auto;
 }
 
-.to-do-item {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  padding: 0.5rem;
-}
-
 .incomplete:hover {
   --bg-opacity: 1;
   background-color: #cc7933;
@@ -596,15 +590,24 @@ video {
 }
 
 .btn {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-right: 0.5rem;
   --bg-opacity: 1;
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));
   border-radius: 0.375rem;
+}
+
+.btn-sm {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.btn-md {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .btn:hover {
